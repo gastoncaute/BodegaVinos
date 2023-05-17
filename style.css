@@ -1,0 +1,240 @@
+body{
+    background-image: url(img/bodega.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 20% 60% 1fr;
+}
+
+.div-alerts1{
+    grid-column: 1 / 2;
+    max-width: 260px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.vinoConsumiendose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bfc204a8;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid yellow;
+    color: rgb(255, 255, 137)
+}
+
+.vinoAcabado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b10202a8;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid red;
+    color: rgb(252, 168, 168)
+}
+
+.listaOrdenada{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.459);
+        border-radius: 1em;
+        padding: 1em;
+        margin: 1em;
+        border: 1px solid white;
+        color: rgb(53, 53, 53)
+}
+
+.bodegaLimpia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.459);
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid white;
+    color: rgb(53, 53, 53)
+}
+
+.div-form{
+    grid-column: 2/ 3;
+    display: flex;
+    justify-content: center;
+    position: static;
+}
+
+.div-alerts2{
+    grid-column: 3 / 4;
+    max-width: 260px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agregarDatos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b10202a8;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid red;
+    color: rgb(252, 168, 168)
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: inherit;
+    width: 50rem;
+    height: 100%;
+    gap: 0.3em;
+    background-color: #bacec870;
+    padding: 1em;
+    border-radius: 1em;
+    margin-top: 2em;
+}
+
+.tittle{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.button-order{
+    all: unset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+svg{
+    cursor: pointer;
+}
+
+.subtittle{
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+input{
+    margin-bottom: 1em;
+}
+
+.submit-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-submit{
+    all: unset;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 1em;
+    cursor: pointer;
+    background-color: #13141470;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 7em 1fr;
+    padding: 3em;
+
+}
+
+.delete-all {
+    max-width: 300px;
+    border-radius: 1em;
+    margin: 15px auto;
+}
+
+.label-vinos-stock{
+    background-color: #bacec870;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 30vw;
+    margin: 1em 2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.label-vinos-sin-stock{
+    background-color: #bacec870;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: 30vw;
+    margin: 1em 2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.vinos-stock {
+    background-color: #bacec870;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    width: 30vw;
+    margin: 2em;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: start;
+    border-radius: 1em;
+    padding: 10px;
+}
+
+.vinos-sin-stock{
+    background-color: #bacec870;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    width: 30vw;
+    margin: 2em;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: start;
+    border-radius: 1em;
+    padding: 10px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    display: flex;
+    justify-content: flex-start;
+}
