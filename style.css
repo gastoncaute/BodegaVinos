@@ -30,6 +30,18 @@ h1{
     padding: 1em;
 }
 
+.vinoAgregado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D1E7DD;
+    border-radius: 5px;
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: 1px solid #91ccb2;
+    color: #0A3622;
+}
+
 .vinoConsumiendose{
     display: flex;
     justify-content: center;
@@ -42,7 +54,7 @@ h1{
     color: rgb(255, 255, 137)
 }
 
-.vinoAcabado{
+.vinoAcabado, .agregarDatos{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +66,7 @@ h1{
     color: rgb(252, 168, 168)
 }
 
-.listaOrdenada{
+.listaOrdenada, .bodegaLimpia{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -64,18 +76,6 @@ h1{
         margin: 1em;
         border: 1px solid white;
         color: rgb(53, 53, 53)
-}
-
-.bodegaLimpia{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.459);
-    border-radius: 1em;
-    padding: 1em;
-    margin: 1em;
-    border: 1px solid white;
-    color: rgb(53, 53, 53)
 }
 
 .div-form{
@@ -92,18 +92,6 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.agregarDatos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #b10202a8;
-    border-radius: 1em;
-    padding: 1em;
-    margin: 1em;
-    border: 1px solid red;
-    color: rgb(252, 168, 168)
 }
 
 form {

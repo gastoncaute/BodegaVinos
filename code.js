@@ -6,19 +6,23 @@ const inputGrape = document.getElementById('input-grape')
 const lista = document.getElementById('lista-de-vinos')
 const listaDeEliminados = document.getElementById('lista-de-eliminados')
 const btnLimpiar = document.getElementById('delete-all')
-const titulo = document.getElementById('title')
 const alertContainer1 = document.getElementById('div-alerts1')
 const alertContainer2 = document.getElementById('div-alerts2')
 
 let listaDeVinos = []
 
 let vinoAIngresar = {
+
     nombre: '',
+
     fecha: '',
+
     uva: ''
+
 }
 
-let vinoAccedido = null
+//guardar localmente el vino accedido para que persista el color amarillo al refrescar
+let vinoAccedido = localStorage.getItem('vinoAccedido');
 
 let listaDeVinosEliminados = []
 
@@ -27,7 +31,9 @@ h1.textContent = ''
 lista.appendChild(h1)
 
 const h1h = document.createElement('h1')
+
 h1h.innerText = ''
+
 listaDeEliminados.appendChild(h1h)
 
 formulario.addEventListener('submit', (e) => {
@@ -42,15 +48,27 @@ formulario.addEventListener('submit', (e) => {
     if (inputName.value == '' || inputCreated.value == '' || inputGrape.value == '') {
         const agregarDatos = document.createElement('div')
         agregarDatos.className = 'agregarDatos'
+
         const pAgregarDatos = document.createTextNode('Completa todos los datos, por favor')
+
         alertContainer2.appendChild(agregarDatos)
+
         agregarDatos.appendChild(pAgregarDatos)
 
         setTimeout(() => {
             alertContainer2.removeChild(agregarDatos)
         }, 3000)
+
     } else {
         listaDeVinos.push(vinoAIngresar)
+        const vinoAgregado = document.createElement('div');
+        vinoAgregado.className = 'vinoAgregado'
+        const pVinoAgregado = document.createTextNode('Vino Agregado');
+        alertContainer1.appendChild(vinoAgregado);
+        vinoAgregado.appendChild(pVinoAgregado);
+        setTimeout(() => {
+            alertContainer1.removeChild(vinoAgregado)
+        }, 3000)
         renderizarVinos()
     }
 
@@ -60,6 +78,7 @@ formulario.addEventListener('submit', (e) => {
 
     localStorage.setItem('vinosAgregados', JSON.stringify(listaDeVinos))
 })
+
 
 function renderizarVinos() {
     lista.innerHTML = '';
@@ -78,11 +97,11 @@ function renderizarVinos() {
 
             if (vino.fecha === vinoAccedido) {
                 li.style.color = 'yellow';
+            }
         }
-    }
 
         ul.innerHTML += `
-        <button class="btn btn-warning" onclick="consumiendoVino('${vino.fecha}')">Abierto</button>
+<button class="btn btn-warning" onclick="consumiendoVino('${vino.fecha}')">Abierto</button>
         <button class="btn btn-danger" onclick="eliminarVino('${vino.fecha}')">Eliminar</button>
         `;
 
@@ -92,13 +111,20 @@ function renderizarVinos() {
     localStorage.setItem('vinosAgregados', JSON.stringify(listaDeVinos));
 }
 
+
 function consumiendoVino(fecha) {
     vinoAccedido = fecha
 
+    // para que persista el color al consumir otros vinos
+    localStorage.setItem('vinoAccedido', vinoAccedido);
+
     const vinoConsumiendose = document.createElement('div');
     vinoConsumiendose.className = 'vinoConsumiendose'
+
     const pConsumiendoVino = document.createTextNode('Vino Consumiéndose');
+
     alertContainer1.appendChild(vinoConsumiendose);
+
     vinoConsumiendose.appendChild(pConsumiendoVino);
 
     setTimeout(() => {
@@ -108,8 +134,10 @@ function consumiendoVino(fecha) {
     renderizarVinos()
 }
 
+
 function eliminarVino(fecha) {
-    vinoAccedido = null
+    // para que persista el color al eliminar vinos
+    localStorage.setItem('vinoAccedido', vinoAccedido);
 
     const vinoEliminado = listaDeVinos.filter(vino => vino.fecha === fecha)[0];
     listaDeVinos = listaDeVinos.filter(vino => vino.fecha != fecha)
@@ -117,8 +145,11 @@ function eliminarVino(fecha) {
 
     const vinoAcabadoAlerta = document.createElement('div')
     vinoAcabadoAlerta.className = 'vinoAcabado'
+
     const pVinoAcabado = document.createTextNode('Vino Acabado')
+
     alertContainer1.appendChild(vinoAcabadoAlerta)
+
     vinoAcabadoAlerta.appendChild(pVinoAcabado)
 
     setTimeout(() => {
@@ -139,7 +170,6 @@ function renderizarVinosEliminados() {
 
     listaDeVinosEliminados.forEach((vino) => {
         const ul = document.createElement('ul');
-
         for (const dato of Object.values(vino)) {
             const li = document.createElement('li');
 
@@ -153,11 +183,13 @@ function renderizarVinosEliminados() {
         }
 
         listaDeEliminados.appendChild(ul);
+
         ul.appendChild(btnLimpiar);
     });
 
     localStorage.setItem('vinosEliminados', JSON.stringify(listaDeVinosEliminados));
 }
+
 
 btnLimpiar.addEventListener('click', () => {
     for (let i = 0; i < listaDeVinosEliminados.length; i++) {
@@ -165,38 +197,49 @@ btnLimpiar.addEventListener('click', () => {
 
         const bodegaLimpia = document.createElement('div')
         bodegaLimpia.className = 'bodegaLimpia'
+
         const pBodegaLimpia = document.createTextNode('Bodega Limpia')
+
         alertContainer1.appendChild(bodegaLimpia)
+
         bodegaLimpia.appendChild(pBodegaLimpia)
 
         setTimeout(() => {
             alertContainer1.removeChild(bodegaLimpia)
         }, 3000)
+
         renderizarVinosEliminados()
 
         listaDeEliminados = ''
     }
 })
 
+
 orderList.addEventListener('click', () => {
-    listaDeVinos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
-    renderizarVinos()
+    if (listaDeVinos.length > 0) {
+        listaDeVinos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
 
-    const listaOrdenada = document.createElement('div')
-    listaOrdenada.className = 'listaOrdenada'
-    const pListaOrdenada = document.createTextNode('Lista Ordenada')
-    alertContainer1.appendChild(listaOrdenada)
-    listaOrdenada.appendChild(pListaOrdenada)
+        renderizarVinos()
 
-    setTimeout(() => {
-        alertContainer1.removeChild(listaOrdenada)
-    }, 3000);
-    
-    renderizarVinos()
+        const listaOrdenada = document.createElement('div')
+        listaOrdenada.className = 'listaOrdenada'
+
+        const plistaOrdenada = document.createTextNode('Lista Ordenada')
+
+        listaOrdenada.appendChild(plistaOrdenada)
+
+        alertContainer1.appendChild(listaOrdenada)
+
+        setTimeout(() => {
+            alertContainer1.removeChild(listaOrdenada)
+        }, 3000)
+    }
 })
+
 
 function verificarAlmacenamientoLocal() {
     const vinosDesdeAlmacenamiento = JSON.parse(localStorage.getItem('vinosAgregados'))
+
     const vinosEliminadosDesdeAlmacenamiento = JSON.parse(localStorage.getItem('vinosEliminados'))
 
     if (vinosDesdeAlmacenamiento !== null && vinosDesdeAlmacenamiento.length > 0) {
