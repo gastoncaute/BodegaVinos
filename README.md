@@ -10,5 +10,16 @@
 
 ## Caracteristicas de la Pagina
 
--- Formulario:
---- Nombre del Vino, Fecha de Elavoracion y Tipo de Uva/
+- Formulario:
+- - Nombre del Vino, Fecha de Elavoracion y Tipo de Uva.
+- - Boton con la funcion de ordenar la lista de vinos mas viejos a mas nuevos.
+
+- Lista Vinos en Stock:
+- - Guardar los vinos agreados con el formulario.
+- - Opcion en cada vino de: 
+- - - Boton "bierto": nos marca el vino en amarillo.
+- - - Boton "Eliminar": elimina el vino y nos lo mueve a la lista "Vinos sin stock".
+
+- Lista Vinos sin Stock:
+- - Guardar los vinos eliminados de la lista "Vinos en Stock".
+- - Boton "Limpiar Bodega": elimina todos los vinos guardados en la lista de "Vinos sin Stock".
